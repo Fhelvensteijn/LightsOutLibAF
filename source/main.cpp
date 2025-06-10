@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "LightsOutLibAF.cpp"
-
-using namespace std;
+#include "LightsOutLibAF.h"
 
 //Made by Ferdi Helvensteijn for the personal project: 4x4 handheld w/ Yves Kersten
 
@@ -16,33 +14,44 @@ int main() {
 	int selWidth;
 	int selHeight;
 
-	cout << "\nchoose board width: ";
-	cin >> width;
-	cout << "\nchoose board height: ";
-	cin >> height;
+	std::cout << "\nchoose board width: ";
+	std::cin >> width;
+	std::cout << "\nchoose board height: ";
+	std::cin >> height;
 
-	cout << "\nchoose light state amount: ";
-	cin >> mod;
+	std::cout << "\nchoose light state amount: ";
+	std::cin >> mod;
 
 	LightsOut game = LightsOut(width, height, mod);
 	while (!game.checkWin()) {
-		cout << "\n";
+		std::cout << "\n";
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
-				cout << game.board[i][j];
+				std::cout << game.board[i][j];
 			}
-			cout << "\n";
+			std::cout << "\n";
 		}
 
-		cout << "\n";
+		std::cout << "\n";
 
-		cout << "choose row: ";
-		cin >> selWidth;
-		cout << "\nchoose column: ";
-		cin >> selHeight;
+		std::cout << "choose row: ";
+		std::cin >> selWidth;
+		std::cout << "\nchoose column: ";
+		std::cin >> selHeight;
 
 		game.flipLight(selWidth, selHeight);
-	}
-	cout << "\nyou win!!\n";
+		}
+	std::cout << "\nyou win!!\n";
 	return 0;
 }
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
